@@ -45,7 +45,6 @@ with DAG(
     transform_name=f"transform_pipeline_{project_name}"
     transformation_pipeline = get_transform_pipeline_group(
         pipeline_name=transform_name, 
-        target_env=target_env, 
         project_name=project_name
     )
 

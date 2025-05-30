@@ -6,7 +6,7 @@ name: 'airflow_dbt'
 version: '0.0.1'
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'airflow_dbt'
+profile: 'default' # Changed to 'default' to align with Cosmos configuration
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be

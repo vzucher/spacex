@@ -1,0 +1,27 @@
+default: # Changed from airflow_dbt to default
+  target: dev # This should match DBT_TARGET_ENV from your Airflow config
+  outputs:
+    dev:
+      type: postgres
+      host: ${POSTGRES_HOST}       # For local dev: set this env var
+      user: ${POSTGRES_USER}       # For local dev: set this env var
+      password: ${POSTGRES_PASSWORD} # For local dev: set this env var
+      port: ${POSTGRES_PORT}       # For local dev: set this env var, defaults to 5432
+      dbname: ${DBT_DB}           # For local dev: set this env var (e.g., airflow_db)
+      schema: ${DBT_SCHEMA}       # For local dev: set this env var (e.g., dbt_dev_staging)
+      threads: 4 # Example, adjust as needed
+      keepalives_idle: 0 # To prevent idle connections from closing
+      connect_timeout: 10
+      retries: 1 # Configure retries for connection attempts if needed
+    prod: # Optional: if you have a prod target defined and want to use it locally
+      type: postgres
+      host: ${PROD_POSTGRES_HOST}   # For local dev: set this env var for prod
+      user: ${PROD_POSTGRES_USER}   # For local dev: set this env var for prod
+      password: ${PROD_POSTGRES_PASSWORD} # For local dev: set this env var for prod
+      port: ${PROD_POSTGRES_PORT}   # For local dev: set this env var for prod
+      dbname: ${PROD_DBT_DB}       # For local dev: set this env var for prod
+      schema: ${PROD_DBT_SCHEMA}   # For local dev: set this env var for prod (e.g., dbt_prod_staging)
+      threads: 4
+      keepalives_idle: 0
+      connect_timeout: 10
+      retries: 1
